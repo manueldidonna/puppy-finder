@@ -9,6 +9,8 @@
 
 A puppy adoption sample app for Android built with [Jetpack Compose](https://developer.android.com/jetpack/compose) `1.0.0-beta01`. Check my [twitter profile](https://twitter.com/manueldidonna/status/1365421315524591620) to see the app in action
 
+:rocket: [Download APK](https://github.com/manueldidonna/puppy-finder/releases/tag/v.1.0.0)
+
 ## :scroll: License
 <pre><code>Copyright (C) 2021 Manuel Di Donna
 
