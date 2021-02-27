@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2021 Manuel Di Donna
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  he Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 package com.manueldidonna.puppyfinder.details
 
 import androidx.compose.foundation.layout.*
@@ -12,10 +28,10 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.manueldidonna.puppyfinder.PuppyFinderTheme
 import com.manueldidonna.puppyfinder.entities.FakePuppies
 import com.manueldidonna.puppyfinder.entities.Puppy
 import com.manueldidonna.puppyfinder.entities.PuppyAge
-import com.manueldidonna.puppyfinder.PuppyFinderTheme
 
 @Composable
 fun PuppyInfo(modifier: Modifier, puppy: Puppy) {
@@ -29,7 +45,7 @@ fun PuppyInfo(modifier: Modifier, puppy: Puppy) {
         Divider()
         PuppyCharacteristicsCarousel(
             contentPadding = PaddingValues(horizontal = 24.dp, vertical = 24.dp),
-            weightInKilos =puppy.weightInKilos,
+            weightInKilos = puppy.weightInKilos,
             age = puppy.age,
             location = puppy.location
         )
@@ -119,7 +135,6 @@ private fun PuppyCharacteristic(icon: ImageVector, text: String) {
         }
     }
 }
-
 
 @Composable
 @Preview

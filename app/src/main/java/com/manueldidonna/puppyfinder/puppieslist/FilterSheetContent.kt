@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2021 Manuel Di Donna
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  he Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 package com.manueldidonna.puppyfinder.puppieslist
 
 import androidx.compose.foundation.background
@@ -38,12 +54,10 @@ fun FilterSheetContent(
     val selectedBreedsAsList = remember(selectedBreeds) { selectedBreeds.toList() }
     Box(Modifier.fillMaxSize()) {
         if (progress < 0.95f) CollapsedBottomSheetContent(
-            modifier = Modifier
-                .height(120.dp)
-                .graphicsLayer {
-                    this.clip = true
-                    this.alpha = 1f - progress
-                },
+            modifier = Modifier.graphicsLayer {
+                this.clip = true
+                this.alpha = 1f - progress
+            },
             selectedBreeds = selectedBreedsAsList,
             removeBreed = toggleBreed
         )
@@ -81,7 +95,7 @@ private fun CollapsedBottomSheetContent(
         if (selectedBreeds.isNotEmpty())
             LazyRow(
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
-                contentPadding = PaddingValues(24.dp)
+                contentPadding = PaddingValues(horizontal = 24.dp, vertical = 16.dp)
             ) {
                 items(selectedBreeds) { breed ->
                     SelectedDogBreed(breedName = breed, removeBreed = { removeBreed(breed) })

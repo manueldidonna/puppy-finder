@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2021 Manuel Di Donna
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  he Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 package com.manueldidonna.puppyfinder.puppieslist
 
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -38,7 +54,7 @@ fun PuppiesList(puppies: List<Puppy>, dogBreeds: List<String>, onPuppyClick: (Pu
 
     var layoutHeight by remember { mutableStateOf(-1) }
 
-    val sheetPeekHeightDp = systemNavigationBarHeightDp() + 120.dp
+    val sheetPeekHeightDp = systemNavigationBarHeightDpAsState().value + 120.dp
 
     val swipeProgress = scaffoldState.bottomSheetState.swipeProgressAsState(
         totalDragDistance = layoutHeight - with(LocalDensity.current) { sheetPeekHeightDp.toPx() }
@@ -104,10 +120,12 @@ private suspend fun BottomSheetState.expandSlowly() {
 }
 
 @Composable
-private fun systemNavigationBarHeightDp(): Dp {
+private fun systemNavigationBarHeightDpAsState(): State<Dp> {
     val density = LocalDensity.current
     val insets = LocalWindowInsets.current.navigationBars
-    return remember(density, insets) { with(density) { insets.bottom.toDp() } }
+    return remember(density, insets) {
+        derivedStateOf { with(density) { insets.bottom.toDp() } }
+    }
 }
 
 @Composable
@@ -177,11 +195,13 @@ private fun FilterPuppiesButton(modifier: Modifier, visible: Boolean, onClick: (
         }
     )
 
-    Box(modifier = modifier.graphicsLayer {
-        this.clip = true
-        this.alpha = alpha
-        this.translationY = translationY
-    }) {
+    Box(
+        modifier = modifier.graphicsLayer {
+            this.clip = true
+            this.alpha = alpha
+            this.translationY = translationY
+        }
+    ) {
         ExtendedFloatingActionButton(
             modifier = Modifier
                 .fillMaxWidth()
