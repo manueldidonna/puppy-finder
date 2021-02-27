@@ -2,7 +2,7 @@
 
 <p>
   <img width="24%" src="art/puppies_list_light.png?raw=true">
-  <img width="24%" src="art/puppies_list_dark.png?raw=true">
+  <img width="24%" src="art/puppies_list_night.png?raw=true">
   <img width="24%" src="art/puppy_details_light.png?raw=true">
   <img width="24%" src="art/puppy_details_night.png?raw=true">
 </p>
